@@ -1,69 +1,57 @@
-# React + TypeScript + Vite
+# Portafolio Profesional – React + Tailwind + TypeScript
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Portfolio profesional moderno, responsive y accesible, con internacionalización (ES/EN), formulario de contacto funcional vía Formspree y sin backend propio.
 
-Currently, two official plugins are available:
+## Características principales
+- **100% Frontend:** No requiere backend, fácil de desplegar en Vercel, Netlify, GitHub Pages, etc.
+- **Internacionalización:** Español e inglés, con selector global.
+- **Formulario de contacto:** Validación en tiempo real, accesibilidad, microinteracciones, integración con Formspree.
+- **Diseño profesional:** Animaciones, dark mode, responsive, UX optimizada.
+- **Código limpio:** Sin `any`, sin dependencias ni archivos no usados.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Configuración rápida
 
-## Expanding the ESLint configuration
+1. **Clona el repo:**
+   ```bash
+   git clone https://github.com/dimichiko/portafolio.git
+   cd portafolio/frontend
+   ```
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+2. **Instala dependencias:**
+   ```bash
+   npm install
+   ```
 
-```js
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+3. **Configura Formspree:**
+   - Regístrate en [Formspree](https://formspree.io/).
+   - Crea un formulario y copia tu endpoint (ejemplo: `https://formspree.io/f/xxxxxxx`).
+   - Abre `src/components/Contact.tsx` y reemplaza la URL en el fetch del handleSubmit:
+     ```ts
+     const response = await fetch('https://formspree.io/f/xxxxxxx', { ... });
+     ```
 
-      // Remove tseslint.configs.recommended and replace with this
-      ...tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      ...tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      ...tseslint.configs.stylisticTypeChecked,
+4. **Ejecuta en desarrollo:**
+   ```bash
+   npm run dev
+   ```
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+5. **Despliega donde quieras:**
+   - Vercel, Netlify, GitHub Pages, etc.
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## Personalización
+- Edita tus datos, proyectos y experiencia en `src/pages/HomePage.tsx` y `src/utils/translations.ts`.
+- Cambia los archivos de CV en `public/resumeSpanish.pdf` y `public/resumeEnglish.pdf`.
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+## Limpieza y mejoras
+- Eliminado todo backend y dependencias no usadas.
+- Eliminados archivos de API y tipos de visitas.
+- Navbar eliminado si no se usa.
+- Solo quedan componentes y utilidades realmente usados.
 
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+## Contacto
+- El formulario de contacto funciona sin backend, directo a tu email vía Formspree.
+- Si quieres usar otro servicio (Getform, Netlify Forms, etc.), solo cambia la URL del fetch.
+
+---
+
+¡Portfolio listo para destacar y recibir oportunidades internacionales! 🚀

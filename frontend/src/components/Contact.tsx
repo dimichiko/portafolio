@@ -152,8 +152,8 @@ const Contact: React.FC<ContactProps> = ({ language, translations }) => {
     setSubmitStatus({ type: null, message: '' });
 
     try {
-      // Simulate API call with timeout
-      const response = await fetch('/api/contact', {
+      // Cambia aquí tu endpoint de Formspree:
+      const response = await fetch('https://formspree.io/f/xxxxxxx', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
