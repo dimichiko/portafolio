@@ -218,7 +218,7 @@ const Contact: React.FC<ContactProps> = ({ language, translations }) => {
         >
           <h2 className="text-3xl font-bold text-white mb-4">{t.contact.title}</h2>
           <div className="w-20 h-1 bg-blue-500 mx-auto mb-6 rounded-full"></div>
-          <p className="text-zinc-300 text-lg max-w-2xl mx-auto leading-relaxed">
+          <p className="text-zinc-200 text-lg max-w-2xl mx-auto leading-relaxed">
             {t.contact.subtitle}
           </p>
         </motion.div>

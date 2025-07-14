@@ -49,7 +49,7 @@ const HomePage: React.FC<HomePageProps> = ({ language }) => {
               <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold text-white text-center mb-6 drop-shadow-lg">
                 {t.hero.title} <span className="text-blue-400">{t.hero.name}</span>
               </h1>
-              <div className="text-xl sm:text-2xl md:text-3xl text-zinc-300 text-center mb-8 font-medium flex flex-col items-center">
+              <div className="text-xl sm:text-2xl md:text-3xl text-zinc-200 text-center mb-8 font-medium flex flex-col items-center">
                 <span className="inline-block">
                   <span className="text-blue-400 font-bold">{t.hero.subtitle}</span>
                   <span className="ml-2 border-r-2 border-blue-400 animate-pulse" style={{ animation: 'blink 1s steps(1) infinite' }} aria-hidden="true"></span>
@@ -102,13 +102,13 @@ const HomePage: React.FC<HomePageProps> = ({ language }) => {
               </div>
               {/* Social proof */}
               <div className="flex gap-4 justify-center mb-8">
-                <a href="https://github.com/dimichiko" target="_blank" rel="noopener noreferrer" aria-label="GitHub" className="text-zinc-300 hover:text-blue-400 transition-colors text-2xl focus:outline-none focus:ring-2 focus:ring-blue-400 rounded-full p-2">
+                <a href="https://github.com/dimichiko" target="_blank" rel="noopener noreferrer" aria-label="GitHub" className="text-zinc-200 hover:text-blue-400 transition-colors text-2xl focus:outline-none focus:ring-2 focus:ring-blue-400 rounded-full p-2">
                   <FaGithub />
                 </a>
-                <a href="https://www.linkedin.com/in/dimitrisvamvoukasgarcia" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" className="text-zinc-300 hover:text-blue-400 transition-colors text-2xl focus:outline-none focus:ring-2 focus:ring-blue-400 rounded-full p-2">
+                <a href="https://www.linkedin.com/in/dimitrisvamvoukasgarcia" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" className="text-zinc-200 hover:text-blue-400 transition-colors text-2xl focus:outline-none focus:ring-2 focus:ring-blue-400 rounded-full p-2">
                   <svg fill="currentColor" viewBox="0 0 24 24" className="w-6 h-6"><path d="M19 0h-14c-2.76 0-5 2.24-5 5v14c0 2.76 2.24 5 5 5h14c2.76 0 5-2.24 5-5v-14c0-2.76-2.24-5-5-5zm-11 19h-3v-9h3v9zm-1.5-10.28c-.97 0-1.75-.79-1.75-1.75s.78-1.75 1.75-1.75 1.75.79 1.75 1.75-.78 1.75-1.75 1.75zm15.5 10.28h-3v-4.5c0-1.08-.02-2.47-1.5-2.47-1.5 0-1.73 1.17-1.73 2.39v4.58h-3v-9h2.88v1.23h.04c.4-.75 1.38-1.54 2.84-1.54 3.04 0 3.6 2 3.6 4.59v4.72z"/></svg>
                 </a>
-                <a href="mailto:ianvamvoukas1230@gmail.com" aria-label="Email" className="text-zinc-300 hover:text-blue-400 transition-colors text-2xl focus:outline-none focus:ring-2 focus:ring-blue-400 rounded-full p-2">
+                <a href="mailto:ianvamvoukas1230@gmail.com" aria-label="Email" className="text-zinc-200 hover:text-blue-400 transition-colors text-2xl focus:outline-none focus:ring-2 focus:ring-blue-400 rounded-full p-2">
                   <svg fill="currentColor" viewBox="0 0 24 24" className="w-6 h-6"><path d="M12 13.065l-8-6.065v12h16v-12l-8 6.065zm8-8.065h-16l8 6.065 8-6.065z"/></svg>
           </a>
         </div>
@@ -159,7 +159,7 @@ const HomePage: React.FC<HomePageProps> = ({ language }) => {
                       {React.cloneElement(tech.icon, { className: 'text-6xl mx-auto mb-2 group-hover:text-blue-400 transition-colors' })}
                   </div>
                     <h3 className="text-xl font-semibold text-blue-400 mb-2 group-hover:text-white transition-colors">{tech.name}</h3>
-                    <p className="text-zinc-400 text-base">{t.technologies.descriptions[tech.name as keyof typeof t.technologies.descriptions]}</p>
+                    <p className="text-zinc-300 text-base">{t.technologies.descriptions[tech.name as keyof typeof t.technologies.descriptions]}</p>
                 </motion.div>
               ))}
             </div>
@@ -174,8 +174,8 @@ const HomePage: React.FC<HomePageProps> = ({ language }) => {
               {t.experience.items.map((exp, idx) => (
                 <div key={idx} className="bg-zinc-800 p-6 rounded-lg">
                   <h3 className="text-xl font-semibold text-blue-400 mb-2">{exp.role}</h3>
-                  <p className="text-zinc-400 mb-1">{exp.period} - {exp.company}</p>
-                  <p className="text-zinc-300 text-sm">{exp.description}</p>
+                  <p className="text-zinc-300 mb-1">{exp.period} - {exp.company}</p>
+                  <p className="text-zinc-200 text-sm">{exp.description}</p>
             </div>
                 ))}
               </div>
@@ -189,7 +189,7 @@ const HomePage: React.FC<HomePageProps> = ({ language }) => {
               {t.projects.items.map((project, idx) => (
                 <div key={idx} className="bg-zinc-800 p-6 rounded-lg">
                   <h3 className="text-xl font-semibold text-blue-400 mb-2">{project.name}</h3>
-                  <p className="text-zinc-400 mb-4">{project.description}</p>
+                  <p className="text-zinc-300 mb-4">{project.description}</p>
                   <div className="flex flex-wrap gap-2 mb-4">
                     {project.stack.map((tech) => (
                       <span key={tech} className="px-2 py-1 bg-blue-900 text-blue-300 rounded text-xs">{tech}</span>
@@ -210,7 +210,7 @@ const HomePage: React.FC<HomePageProps> = ({ language }) => {
       <Contact language={language} translations={translations} />
 
       <footer className="py-8 border-t border-zinc-800 mt-12 text-center bg-black">
-        <p className="text-zinc-400 text-sm">{t.footer.copyright}</p>
+        <p className="text-zinc-300 text-sm">{t.footer.copyright}</p>
       </footer>
     </div>
   );
