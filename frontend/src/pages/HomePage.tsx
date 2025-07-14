@@ -1,21 +1,24 @@
 import * as React from 'react';
 import { useState, useRef, useEffect } from 'react';
 import { FaGithub, FaArrowRight } from 'react-icons/fa';
-import { SiReact, SiTypescript, SiNextdotjs, SiNodedotjs, SiGraphql, SiPostgresql, SiTailwindcss, SiGit, SiDocker } from 'react-icons/si';
+import { SiReact, SiJavascript, SiNodedotjs, SiDotnet, SiMongodb, SiHtml5, SiGit, SiTypescript, SiPostgresql } from 'react-icons/si';
 import { motion } from 'framer-motion';
 import { translations } from '../utils/translations';
 import Contact from '../components/Contact';
+import LoadingScreen from '../components/LoadingScreen';
+import LanguageSelector from '../components/LanguageSelector';
 
 const technologies = [
-  { name: 'React', icon: <SiReact className="text-blue-400 mx-auto mb-2" /> },
+  { name: 'JavaScript', icon: <SiJavascript className="text-yellow-400 mx-auto mb-2" /> },
   { name: 'TypeScript', icon: <SiTypescript className="text-blue-500 mx-auto mb-2" /> },
-  { name: 'Next.js', icon: <SiNextdotjs className="text-black dark:text-white mx-auto mb-2" /> },
+  { name: 'React', icon: <SiReact className="text-blue-400 mx-auto mb-2" /> },
   { name: 'Node.js', icon: <SiNodedotjs className="text-green-500 mx-auto mb-2" /> },
-  { name: 'GraphQL', icon: <SiGraphql className="text-pink-500 mx-auto mb-2" /> },
+  { name: 'ASP.NET', icon: <SiDotnet className="text-purple-500 mx-auto mb-2" /> },
+  { name: 'MongoDB', icon: <SiMongodb className="text-green-600 mx-auto mb-2" /> },
   { name: 'PostgreSQL', icon: <SiPostgresql className="text-blue-600 mx-auto mb-2" /> },
-  { name: 'Tailwind CSS', icon: <SiTailwindcss className="text-cyan-400 mx-auto mb-2" /> },
+  { name: 'Express', icon: <SiNodedotjs className="text-green-400 mx-auto mb-2" /> },
+  { name: 'HTML/CSS', icon: <SiHtml5 className="text-orange-500 mx-auto mb-2" /> },
   { name: 'Git', icon: <SiGit className="text-orange-500 mx-auto mb-2" /> },
-  { name: 'Docker', icon: <SiDocker className="text-blue-400 mx-auto mb-2" /> },
 ];
 
 interface HomePageProps {
@@ -23,9 +26,11 @@ interface HomePageProps {
   setLanguage: (language: 'es' | 'en') => void;
 }
 
-const HomePage: React.FC<HomePageProps> = ({ language }) => {
+const HomePage: React.FC<HomePageProps> = ({ language, setLanguage }) => {
   const [cvMenuOpen, setCvMenuOpen] = useState(false);
   const cvMenuRef = useRef<HTMLDivElement>(null);
+  const [isLoading, setIsLoading] = useState(true);
+  const [isHeaderVisible, setIsHeaderVisible] = useState(true);
 
   const t = translations[language];
 
@@ -39,9 +44,69 @@ const HomePage: React.FC<HomePageProps> = ({ language }) => {
     return () => document.removeEventListener('mousedown', handleClickOutside);
   }, []);
 
+  useEffect(() => {
+    // Simular tiempo de carga
+    const timer = setTimeout(() => {
+      setIsLoading(false);
+    }, 2000);
+    return () => clearTimeout(timer);
+  }, []);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const currentScrollY = window.scrollY;
+      
+      // Ocultar header al bajar del hero (después de 100px)
+      if (currentScrollY > 100) {
+        setIsHeaderVisible(false);
+      } else {
+        setIsHeaderVisible(true);
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  if (isLoading) {
+    return <LoadingScreen />;
+  }
+
   return (
     <div className="w-full min-h-screen bg-black text-zinc-100">
-      <main className="pt-16 bg-black">
+      {/* Header con Logo y Selector de Idioma */}
+      <motion.header 
+        className="fixed top-0 left-0 right-0 z-50 bg-black/95 backdrop-blur-lg border-b border-zinc-800 shadow-2xl"
+        animate={{ 
+          y: isHeaderVisible ? 0 : -100,
+          opacity: isHeaderVisible ? 1 : 0
+        }}
+        transition={{ duration: 0.3, ease: "easeInOut" }}
+        style={{ height: '64px' }}
+      >
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 h-full flex items-center justify-between">
+          <motion.div 
+            className="flex items-center space-x-3"
+            initial={{ opacity: 0, x: -20 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.5 }}
+          >
+            <img src="/logo-dv.png" alt="DV Logo" className="w-9 h-9 rounded-lg shadow-md bg-zinc-900 p-1" />
+            <span className="text-blue-400 font-semibold text-xl">Dimitris Vamvoukas</span>
+          </motion.div>
+          <motion.div
+            initial={{ opacity: 0, x: 20 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.5, delay: 0.2 }}
+            className="flex items-center"
+          >
+            <div className="bg-zinc-900 rounded-xl px-2 py-1 flex gap-2 shadow-inner">
+              <LanguageSelector currentLanguage={language} onLanguageChange={setLanguage} />
+            </div>
+          </motion.div>
+        </div>
+      </motion.header>
+      <main className="pt-20 bg-black"> {/* <-- padding top mayor para que no tape el contenido */}
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           {/* Hero */}
           <section id="home" className="relative min-h-screen flex items-center justify-center bg-black overflow-hidden">
@@ -196,8 +261,8 @@ const HomePage: React.FC<HomePageProps> = ({ language }) => {
                             ))}
                           </div>
                   <div className="flex space-x-4">
-                    <a href="#" target="_blank" rel="noopener noreferrer" className="text-blue-400 hover:text-white transition-colors flex items-center"><FaGithub className="mr-1" />{t.projects.code}</a>
-                    <a href="#" target="_blank" rel="noopener noreferrer" className="text-blue-400 hover:text-white transition-colors flex items-center"><FaArrowRight className="mr-1" />{t.projects.liveDemo}</a>
+                    <a href={project.github} target="_blank" rel="noopener noreferrer" className="text-blue-400 hover:text-white transition-colors flex items-center"><FaGithub className="mr-1" />{t.projects.code}</a>
+                    <a href={project.demo} target="_blank" rel="noopener noreferrer" className="text-blue-400 hover:text-white transition-colors flex items-center"><FaArrowRight className="mr-1" />{t.projects.liveDemo}</a>
                         </div>
                       </div>
                 ))}
@@ -210,7 +275,10 @@ const HomePage: React.FC<HomePageProps> = ({ language }) => {
       <Contact language={language} translations={translations} />
 
       <footer className="py-8 border-t border-zinc-800 mt-12 text-center bg-black">
-        <p className="text-zinc-300 text-sm">{t.footer.copyright}</p>
+        <div className="flex items-center justify-center space-x-3">
+          <img src="/logo-dv.png" alt="DV Logo" className="w-5 h-5 rounded" />
+          <p className="text-zinc-300 text-sm">{t.footer.copyright}</p>
+        </div>
       </footer>
     </div>
   );

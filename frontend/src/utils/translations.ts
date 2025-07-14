@@ -13,31 +13,32 @@ export const translations = {
       subtitle: "Stack principal",
       title: "Tecnologías que domino",
       descriptions: {
-        React: "Biblioteca frontend para construir interfaces de usuario",
+        JavaScript: "Lenguaje de programación fundamental para desarrollo web moderno",
         TypeScript: "Lenguaje de programación fuertemente tipado que se basa en JavaScript",
-        "Next.js": "El Framework de React para Producción",
-        "Node.js": "Runtime de JavaScript construido sobre el motor V8 de Chrome",
-        GraphQL: "Lenguaje de consulta para APIs y runtime para ejecutar esas consultas",
-        PostgreSQL: "Sistema de base de datos relacional de objetos potente y de código abierto",
-        "Tailwind CSS": "Un framework CSS utility-first para construir diseños personalizados rápidamente",
-        Git: "Sistema de control de versiones distribuido",
-        Docker: "Plataforma para desarrollar, enviar y ejecutar aplicaciones"
+        React: "Biblioteca frontend para construir interfaces de usuario interactivas",
+        "Node.js": "Runtime de JavaScript para desarrollo backend y aplicaciones full-stack",
+        "ASP.NET": "Framework de Microsoft para desarrollo web empresarial",
+        MongoDB: "Base de datos NoSQL para aplicaciones escalables",
+        PostgreSQL: "Sistema de base de datos relacional potente y de código abierto",
+        Express: "Framework web para Node.js para crear APIs y aplicaciones backend",
+        "HTML/CSS": "Fundamentos del desarrollo web frontend",
+        Git: "Sistema de control de versiones para colaboración en desarrollo"
       }
     },
     experience: {
       title: "Mi Experiencia",
       items: [
         {
-          role: "Desarrollador Web Freelance",
-          period: "2022 - Presente",
-          company: "Autónomo",
-          description: "Construyendo aplicaciones web modernas para clientes usando React, TypeScript y Node.js. Entregando soluciones de alta calidad, responsivas y performantes."
+          role: "Web Developer Internship",
+          period: "Enero 2024 - Julio 2025",
+          company: "Alto Horizonte",
+          description: "Trabajé en una aplicación web de logística forestal usando ASP.NET Web Forms y VB.NET. Contribuí al desarrollo de funcionalidades core incluyendo conteo de troncos, edición de datos e interfaces de reportes. Colaboré en mejoras frontend con JavaScript y CSS, mejorando usabilidad y responsividad móvil."
         },
         {
-          role: "Desarrollador Frontend",
-          period: "2020 - 2022",
-          company: "Agencia de Tecnología",
-          description: "Desarrollé y mantuve sitios web y aplicaciones web para clientes. Colaboré con diseñadores y desarrolladores backend para implementar UIs pixel-perfect."
+          role: "Web Development Intern",
+          period: "Febrero 2025 - Abril 2025",
+          company: "FUSE / People & Technology",
+          description: "Colaboré en el diseño, desarrollo y mantenimiento de sitios web de la empresa y clientes usando HTML, CSS, JavaScript y WordPress. Contribuí a layouts responsivos, mejoras de UI/UX y actualizaciones de contenido. Gané experiencia práctica trabajando con proyectos en vivo y clientes reales."
         }
       ]
     },
@@ -47,19 +48,25 @@ export const translations = {
       liveDemo: "Demo en vivo",
       items: [
         {
-          name: "portfolio-tracker",
-          description: "Una aplicación moderna de seguimiento de portafolio con análisis en tiempo real.",
-          stack: ["React", "TypeScript", "Next.js", "Tailwind CSS"]
+          name: "OsmoS E-commerce",
+          description: "Plataforma de comercio electrónico completa con gestión de productos, carrito de compras y sistema de pagos integrado.",
+          stack: ["React", "Node.js", "MongoDB", "JavaScript"],
+          github: "https://github.com/dimichiko/OSMOS",
+          demo: "#"
         },
         {
-          name: "ecommerce-platform",
-          description: "Solución de comercio electrónico full-stack con procesamiento de pagos y gestión de inventario.",
-          stack: ["React", "Node.js", "MongoDB", "Stripe"]
+          name: "Habit Tracker App",
+          description: "Aplicación móvil para seguimiento de hábitos con landing page moderna y sistema de recordatorios personalizados.",
+          stack: ["React", "TypeScript", "HTML/CSS", "Git"],
+          github: "https://github.com/dimichiko/lifeHubMobile",
+          demo: "#"
         },
         {
-          name: "task-management-app",
-          description: "Gestión de tareas colaborativa con actualizaciones en tiempo real y funciones de equipo.",
-          stack: ["React", "Express", "MongoDB", "Socket.IO"]
+          name: "Info Pages",
+          description: "Sitios web informativos responsivos con diseño moderno y optimización SEO para mejor visibilidad.",
+          stack: ["HTML/CSS", "JavaScript", "Git", "WordPress"],
+          github: "https://github.com/dimichiko/Max_Paltas",
+          demo: "https://www.campo-pack.com"
         }
       ]
     },
@@ -120,31 +127,32 @@ export const translations = {
       subtitle: "Main stack",
       title: "Technologies I Work With",
       descriptions: {
-        React: "Frontend library for building user interfaces",
+        JavaScript: "Fundamental programming language for modern web development",
         TypeScript: "Strongly typed programming language that builds on JavaScript",
-        "Next.js": "The React Framework for Production",
-        "Node.js": "JavaScript runtime built on Chrome's V8 JavaScript engine",
-        GraphQL: "Query language for APIs and a runtime for executing those queries",
+        React: "Frontend library for building interactive user interfaces",
+        "Node.js": "JavaScript runtime for backend development and full-stack applications",
+        "ASP.NET": "Microsoft framework for enterprise web development",
+        MongoDB: "NoSQL database for scalable applications",
         PostgreSQL: "Powerful, open source object-relational database system",
-        "Tailwind CSS": "A utility-first CSS framework for rapidly building custom designs",
-        Git: "Distributed version control system",
-        Docker: "Platform for developing, shipping, and running applications"
+        Express: "Web framework for Node.js to create APIs and backend applications",
+        "HTML/CSS": "Frontend web development fundamentals",
+        Git: "Version control system for development collaboration"
       }
     },
     experience: {
       title: "My Experience",
       items: [
         {
-          role: "Freelance Web Developer",
-          period: "2022 - Present",
-          company: "Self-Employed",
-          description: "Building modern web applications for clients using React, TypeScript, and Node.js. Delivering high-quality, responsive, and performant solutions."
+          role: "Web Developer Internship",
+          period: "January 2024 - July 2025",
+          company: "Alto Horizonte",
+          description: "Worked on a real-world forestry logistics web application using ASP.NET Web Forms and VB.NET. Contributed to core feature development including log counting, data editing, and summary reporting interfaces. Collaborated on frontend enhancements with JavaScript and CSS, improving usability and mobile responsiveness."
         },
         {
-          role: "Frontend Developer",
-          period: "2020 - 2022",
-          company: "Tech Agency",
-          description: "Developed and maintained client websites and web applications. Collaborated with designers and backend developers to implement pixel-perfect UIs."
+          role: "Web Development Intern",
+          period: "February 2025 - April 2025",
+          company: "FUSE / People & Technology",
+          description: "Collaborated on the design, development, and maintenance of company and client websites using HTML, CSS, JavaScript, and WordPress. Contributed to responsive layouts, UI/UX enhancements, and content updates. Gained hands-on experience working with live projects and real clients in a collaborative setting."
         }
       ]
     },
@@ -154,19 +162,25 @@ export const translations = {
       liveDemo: "Live Demo",
       items: [
         {
-          name: "portfolio-tracker",
-          description: "A modern portfolio tracking application with real-time analytics.",
-          stack: ["React", "TypeScript", "Next.js", "Tailwind CSS"]
+          name: "OsmoS E-commerce",
+          description: "Complete e-commerce platform with product management, shopping cart and integrated payment system.",
+          stack: ["React", "Node.js", "MongoDB", "JavaScript"],
+          github: "https://github.com/dimichiko/OSMOS",
+          demo: "#"
         },
         {
-          name: "ecommerce-platform",
-          description: "Full-stack e-commerce solution with payment processing and inventory management.",
-          stack: ["React", "Node.js", "MongoDB", "Stripe"]
+          name: "Habit Tracker App",
+          description: "Mobile application for habit tracking with modern landing page and personalized reminder system.",
+          stack: ["React", "TypeScript", "HTML/CSS", "Git"],
+          github: "https://github.com/dimichiko/lifeHubMobile",
+          demo: "#"
         },
         {
-          name: "task-management-app",
-          description: "Collaborative task management with real-time updates and team features.",
-          stack: ["React", "Express", "MongoDB", "Socket.IO"]
+          name: "Info Pages",
+          description: "Responsive informational websites with modern design and SEO optimization for better visibility.",
+          stack: ["HTML/CSS", "JavaScript", "Git", "WordPress"],
+          github: "https://github.com/dimichiko/Max_Paltas",
+          demo: "https://www.campo-pack.com"
         }
       ]
     },
