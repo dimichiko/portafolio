@@ -11,7 +11,7 @@ export const translations = {
     },
     technologies: {
       subtitle: "Stack principal",
-      title: "Technologies I Work With",
+      title: "Tecnologías que domino",
       descriptions: {
         React: "Biblioteca frontend para construir interfaces de usuario",
         TypeScript: "Lenguaje de programación fuertemente tipado que se basa en JavaScript",

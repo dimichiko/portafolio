@@ -1,143 +1,57 @@
-# Portfolio Profesional
+# Portafolio Profesional – React + Tailwind + TypeScript
 
-Proyecto full-stack con backend Node.js/Express/TypeScript/Prisma y frontend React/Vite/TypeScript.
+Portfolio profesional moderno, responsive y accesible, con internacionalización (ES/EN), formulario de contacto funcional vía Formspree y sin backend propio.
 
-## 🏗️ Estructura del Proyecto
+## Características principales
+- **100% Frontend:** No requiere backend, fácil de desplegar en Vercel, Netlify, GitHub Pages, etc.
+- **Internacionalización:** Español e inglés, con selector global.
+- **Formulario de contacto:** Validación en tiempo real, accesibilidad, microinteracciones, integración con Formspree.
+- **Diseño profesional:** Animaciones, dark mode, responsive, UX optimizada.
+- **Código limpio:** Sin `any`, sin dependencias ni archivos no usados.
 
-```
-dimitrisVamvoukasPersonal/
-├── backend/
-│   ├── src/
-│   │   ├── controllers/
-│   │   ├── routes/
-│   │   ├── utils/
-│   │   ├── config/
-│   │   └── index.ts
-│   ├── prisma/
-│   │   └── schema.prisma
-│   ├── package.json
-│   ├── tsconfig.json
-│   └── .env
-└── frontend/
-    ├── src/
-    │   ├── components/
-    │   ├── pages/
-    │   ├── utils/
-    │   ├── types/
-    │   └── App.tsx
-    ├── package.json
-    ├── tailwind.config.js
-    └── postcss.config.js
-```
+## Configuración rápida
 
-## 🚀 Instalación y Configuración
+1. **Clona el repo:**
+   ```bash
+   git clone https://github.com/dimichiko/portafolio.git
+   cd portafolio/frontend
+   ```
 
-### 1. Configurar Base de Datos PostgreSQL
+2. **Instala dependencias:**
+   ```bash
+   npm install
+   ```
 
-```bash
-# Instalar PostgreSQL (si no lo tienes)
-# macOS con Homebrew:
-brew install postgresql
-brew services start postgresql
+3. **Configura Formspree:**
+   - Regístrate en [Formspree](https://formspree.io/).
+   - Crea un formulario y copia tu endpoint (ejemplo: `https://formspree.io/f/xxxxxxx`).
+   - Abre `src/components/Contact.tsx` y reemplaza la URL en el fetch del handleSubmit:
+     ```ts
+     const response = await fetch('https://formspree.io/f/xxxxxxx', { ... });
+     ```
 
-# Crear base de datos
-createdb portfolio_db
-```
+4. **Ejecuta en desarrollo:**
+   ```bash
+   npm run dev
+   ```
 
-### 2. Configurar Backend
+5. **Despliega donde quieras:**
+   - Vercel, Netlify, GitHub Pages, etc.
 
-```bash
-cd backend
+## Personalización
+- Edita tus datos, proyectos y experiencia en `src/pages/HomePage.tsx` y `src/utils/translations.ts`.
+- Cambia los archivos de CV en `public/resumeSpanish.pdf` y `public/resumeEnglish.pdf`.
 
-# Instalar dependencias
-npm install
+## Limpieza y mejoras
+- Eliminado todo backend y dependencias no usadas.
+- Eliminados archivos de API y tipos de visitas.
+- Navbar eliminado si no se usa.
+- Solo quedan componentes y utilidades realmente usados.
 
-# Configurar variables de entorno
-# Editar .env con tu DATABASE_URL:
-# DATABASE_URL="postgresql://username:password@localhost:5432/portfolio_db"
+## Contacto
+- El formulario de contacto funciona sin backend, directo a tu email vía Formspree.
+- Si quieres usar otro servicio (Getform, Netlify Forms, etc.), solo cambia la URL del fetch.
 
-# Generar cliente Prisma
-npm run db:generate
+---
 
-# Sincronizar esquema con base de datos
-npm run db:push
-```
-
-### 3. Configurar Frontend
-
-```bash
-cd frontend
-
-# Instalar dependencias
-npm install
-```
-
-## 🏃‍♂️ Ejecutar el Proyecto
-
-### Terminal 1 - Backend
-```bash
-cd backend
-npm run dev
-```
-El backend estará disponible en: http://localhost:3000
-
-### Terminal 2 - Frontend
-```bash
-cd frontend
-npm run dev
-```
-El frontend estará disponible en: http://localhost:5173
-
-## 📡 Endpoints de la API
-
-- `GET /api/ping` - Devuelve "pong" (test de conexión)
-- `POST /api/visits` - Crear nueva visita
-- `GET /api/visits` - Obtener todas las visitas
-
-## 🎨 Características del Frontend
-
-- **Tema**: Negro elegante con distintos tonos
-- **Animaciones**: Framer Motion para transiciones suaves
-- **Estilos**: TailwindCSS para diseño responsive
-- **Estado**: Indicador de conexión con backend en tiempo real
-
-## 🛠️ Comandos Útiles
-
-### Backend
-```bash
-npm run dev          # Desarrollo con ts-node-dev
-npm run build        # Compilar TypeScript
-npm run start        # Ejecutar producción
-npm run db:studio    # Abrir Prisma Studio
-```
-
-### Frontend
-```bash
-npm run dev          # Desarrollo con Vite
-npm run build        # Build para producción
-npm run preview      # Preview del build
-```
-
-## 🔧 Tecnologías Utilizadas
-
-### Backend
-- Node.js + Express
-- TypeScript
-- Prisma ORM
-- PostgreSQL
-- CORS habilitado
-
-### Frontend
-- React 18
-- Vite
-- TypeScript
-- TailwindCSS
-- Framer Motion
-- Axios para API calls
-
-## 📝 Próximos Pasos
-
-1. Configurar tu `DATABASE_URL` en `backend/.env`
-2. Ejecutar `npm run db:push` para crear las tablas
-3. Iniciar ambos servidores
-4. ¡Tu portfolio está listo! 🎉 # portafolio
+¡Portfolio listo para destacar y recibir oportunidades internacionales! 🚀
