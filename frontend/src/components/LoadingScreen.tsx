@@ -15,12 +15,10 @@ const LoadingScreen: React.FC = () => {
           alt="DV Logo"
           className="w-16 h-16 rounded-lg"
           animate={{ 
-            rotate: [0, 360],
-            scale: [1, 1.1, 1]
+            scale: [1, 1.05, 1]
           }}
           transition={{ 
-            rotate: { duration: 2, repeat: Infinity, ease: "linear" },
-            scale: { duration: 1, repeat: Infinity, ease: "easeInOut" }
+            scale: { duration: 1.5, repeat: Infinity, ease: "easeInOut" }
           }}
         />
         <motion.div

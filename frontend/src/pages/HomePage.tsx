@@ -32,6 +32,37 @@ const HomePage: React.FC<HomePageProps> = ({ language, setLanguage }) => {
   const [isLoading, setIsLoading] = useState(true);
   const [isHeaderVisible, setIsHeaderVisible] = useState(true);
 
+  // Función para scroll suave con easing personalizado
+  const smoothScrollTo = (targetId: string) => {
+    const target = document.getElementById(targetId);
+    if (target) {
+      const targetPosition = target.offsetTop - 80; // Ajuste para el header
+      const startPosition = window.pageYOffset;
+      const distance = targetPosition - startPosition;
+      const duration = 1500; // 1.5 segundos
+      let start: number | null = null;
+
+      const easeInOutCubic = (t: number) => {
+        return t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
+      };
+
+      const animation = (currentTime: number) => {
+        if (start === null) start = currentTime;
+        const timeElapsed = currentTime - start;
+        const progress = Math.min(timeElapsed / duration, 1);
+        const easedProgress = easeInOutCubic(progress);
+        
+        window.scrollTo(0, startPosition + distance * easedProgress);
+        
+        if (timeElapsed < duration) {
+          requestAnimationFrame(animation);
+        }
+      };
+
+      requestAnimationFrame(animation);
+    }
+  };
+
   const t = translations[language];
 
   useEffect(() => {
@@ -48,7 +79,7 @@ const HomePage: React.FC<HomePageProps> = ({ language, setLanguage }) => {
     // Simular tiempo de carga
     const timer = setTimeout(() => {
       setIsLoading(false);
-    }, 2000);
+    }, 800);
     return () => clearTimeout(timer);
   }, []);
 
@@ -121,13 +152,13 @@ const HomePage: React.FC<HomePageProps> = ({ language, setLanguage }) => {
                 </span>
               </div>
               <div className="flex flex-col sm:flex-row gap-4 justify-center mb-8">
-                <a
-                  href="#projects"
+                <button
+                  onClick={() => smoothScrollTo('projects')}
                   className="px-8 py-3 bg-blue-600 text-white font-semibold rounded-lg shadow-lg hover:scale-105 hover:bg-blue-700 transition transform focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-offset-2"
                   aria-label={t.hero.viewWork}
                 >
                   {t.hero.viewWork}
-                </a>
+                </button>
                 {/* Botón de CV con menú controlado por estado */}
                 <div className="relative" ref={cvMenuRef}>
                   <button
@@ -268,11 +299,58 @@ const HomePage: React.FC<HomePageProps> = ({ language, setLanguage }) => {
                 ))}
               </div>
           </section>
+
+          {/* Botón de contacto después de proyectos */}
+          <section className="py-16 bg-black">
+            <div className="text-center">
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6 }}
+                className="max-w-2xl mx-auto"
+              >
+                <h3 className="text-2xl font-bold text-white mb-4">
+                  {language === 'es' ? '¿Te gustó mi trabajo?' : 'Like what you see?'}
+                </h3>
+                <p className="text-zinc-300 mb-8">
+                  {language === 'es' 
+                    ? 'Estoy disponible para nuevos proyectos y oportunidades. ¡Hablemos!' 
+                    : 'I\'m available for new projects and opportunities. Let\'s talk!'
+                  }
+                </p>
+                <motion.button
+                  onClick={() => smoothScrollTo('contact')}
+                  className="px-8 py-4 bg-blue-600 text-white font-semibold rounded-lg shadow-lg hover:bg-blue-700 hover:scale-105 transition transform focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-offset-2"
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                >
+                  {language === 'es' ? 'Ponte en Contacto' : 'Get in Touch'}
+                </motion.button>
+              </motion.div>
+            </div>
+          </section>
                 </div>
       </main>
 
       {/* Contact Component */}
       <Contact language={language} translations={translations} />
+
+      {/* Botón flotante de contacto */}
+      <motion.button
+        onClick={() => smoothScrollTo('contact')}
+        className="fixed bottom-6 right-6 z-40 bg-blue-600 text-white p-4 rounded-full shadow-lg hover:bg-blue-700 hover:scale-110 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-offset-2"
+        initial={{ opacity: 0, scale: 0 }}
+        animate={{ opacity: 1, scale: 1 }}
+        transition={{ delay: 1, duration: 0.5 }}
+        whileHover={{ scale: 1.1 }}
+        whileTap={{ scale: 0.95 }}
+        aria-label="Contactar"
+      >
+        <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
+        </svg>
+      </motion.button>
 
       <footer className="py-8 border-t border-zinc-800 mt-12 text-center bg-black">
         <div className="flex items-center justify-center space-x-3">
